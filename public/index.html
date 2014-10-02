@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>
+        post
+    </title>
+    <script src="js/lib/jquery-1.8.0.min.js" type="text/javascript"></script>
+    <script src="js/lib/build/build.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        require('boot');
+    </script>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="lib/bootstrap-3.2.0-dist/css/bootstrap.min.css">
+    <script src="lib/bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+
+    <script src="js/index.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        #hostPanel, #messagePanel, #pushListenPanel, #outputPanel {
+            margin-right: -10px;
+            margin-left: -10px;
+        }
+
+        #outputPanel {
+            height: auto;
+            min-height: 300px;
+        }
+
+        #outputPanel > .panel-heading {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        #hostPanel > div, #messagePanel > div, #pushListenPanel > div {
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 5px;
+            padding-top: 5px;
+        }
+
+        #outputPanel .panel-title>p {
+            float: left;
+        }
+        #outputPanel .panel-title>div {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app" class="container-fluid">
+    <div class="page-header">
+        <h1>Pomelo Postman
+            <small>a client for pomelo(websocket)</small>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-md-5 col-sm-12">
+            <div id="hostPanel" class="row well well-sm">
+                <div class="col-md-6 col-sm-8">
+                    <label for="host" class="sr-only">host</label>
+                    <input id="host" type="text" placeholder="Enter host" class="form-control"/>
+                    <span id="connectingTip" class="help-block"></span>
+                </div>
+                <div class="col-md-3 col-sm-4">
+                    <label for="port" class="sr-only">port</label>
+                    <input id="port" type="text" placeholder="Enter port" class="form-control"/>
+                </div>
+                <div class="col-md-3  col-sm-12">
+                    <input id="connect" type="button" value="connect" class="btn btn-success btn-block"/>
+                </div>
+            </div>
+            <div id="messagePanel" class="row well well-sm">
+                <div class="col-md-6 col-sm-12">
+                    <label for="route" class="sr-only">route</label>
+                    <input id="route" type="text" placeholder="Enter route" class="form-control"/>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <label for="sendType" class="sr-only">send type</label>
+                    <select id="sendType" class="form-control">
+                        <option value="request">request</option>
+                        <option value="notify">notify</option>
+                        <option value="">--send type--</option>
+                    </select>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <label for="msgType" class="sr-only">message type</label>
+                    <select id="msgType" class="form-control">
+                        <option value="json">json</option>
+                        <option value="string">string</option>
+                        <option value="">--message type--</option>
+                    </select>
+                </div>
+                <div class="col-md-9 col-sm-12">
+                    <label for="msg" class="sr-only">message</label>
+                    <textarea id="msg" class="form-control" placeholder="Enter message" rows="3"
+                              class="form-control"></textarea>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <input id="send" type="button" value="send" class="btn btn-primary btn-block"/>
+                </div>
+            </div>
+            <div id="pushListenPanel" class="row well well-sm">
+                <div class="col-md-9 col-sm-12">
+                    <label for="pushRoutes" class="sr-only">push routes</label>
+                    <input id="pushRoutes" type="text" placeholder="Enter push routes separate by commas"
+                           class="form-control"/>
+                    <span id="listeningPushRoutes" class="help-block"></span>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <input id="listen" type="button" value="listen" class="btn btn-info btn-block"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7  col-sm-12">
+            <div id="outputPanel" class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <p>Output</p>
+                        <div>
+                            <button type="button" class="btn btn-default btn-xs">
+                                <span id="clearOutput" class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="output" class="panel-body"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
